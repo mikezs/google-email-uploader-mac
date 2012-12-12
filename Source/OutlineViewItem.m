@@ -50,7 +50,8 @@
   }
 
   if ([children_ count] > 0) {
-    str = [str stringByAppendingFormat:@" (%u child items)", [children_ count]];
+      int childCount = [children_ count];
+    str = [str stringByAppendingFormat:@" (%d child items)", childCount];
   }
 
   if (numberOfMessages_ > 0) {
