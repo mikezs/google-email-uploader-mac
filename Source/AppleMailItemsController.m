@@ -265,6 +265,12 @@
       } else {
         // ignore the Messages folder in Apple Mail's path
         NSString *parentPartialPathWithoutMessages = [partialPathParent stringByDeletingLastPathComponent];
+          
+          while (![parentPartialPathWithoutMessages hasSuffix:@".mbox"])
+          {
+              parentPartialPathWithoutMessages = [parentPartialPathWithoutMessages stringByDeletingLastPathComponent];
+          }
+          
         parentItem = [itemMap objectForKey:parentPartialPathWithoutMessages];
       }
 
