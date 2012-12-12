@@ -42,7 +42,7 @@
 
   NSCellStateValue state = [self state];
   if (state == NSOnState) {
-    str = [str stringByAppendingFormat:@" %C", 0x2713]; // checkmark
+    str = [str stringByAppendingString:@" ✓"]; // checkmark
   }
 
   if (path_) {

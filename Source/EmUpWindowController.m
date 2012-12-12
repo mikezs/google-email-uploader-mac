@@ -430,7 +430,8 @@ static EmUpWindowController* gEmUpWindowController = nil;
 
   // make a controller for each thunderbird profile
   NSString *tbirdProfilesPath = [@"~/Library/Thunderbird/Profiles" stringByStandardizingPath];
-  NSArray *tbirdProfiles = [fileMgr directoryContentsAtPath:tbirdProfilesPath];
+    NSError *error;
+    NSArray *tbirdProfiles = [fileMgr contentsOfDirectoryAtPath:tbirdProfilesPath error:&error];
 
   for (NSString *profileName in tbirdProfiles) {
     if (![profileName hasPrefix:@"."]) {
@@ -489,8 +490,8 @@ enum {
   NSString *archivePath = [self entourageArchiveImportPath];
 
   NSFileManager *fileManager = [NSFileManager defaultManager];
-  [fileManager removeFileAtPath:archivePath
-                        handler:nil];
+    NSError *error;
+    [fileManager removeItemAtPath:archivePath error:&error];
 }
 
 - (IBAction)importRGEArchiveFromEntourage:(id)sender {
@@ -529,7 +530,7 @@ enum {
     NSString *msg = [errorDict objectForKey:NSAppleScriptErrorMessage];
     NSBeginAlertSheet(title, nil, nil, nil,
                       [self window], self, NULL,
-                      nil, nil, msg);
+                      nil, nil, @"%@", msg);
     return;
   }
 
@@ -566,14 +567,12 @@ enum {
     [panel setCanChooseFiles:NO];
     [panel setMessage:NSLocalizedString(@"SelectTitle", nil)]; // "Select Mail Directory"
   }
-
-  [panel beginSheetForDirectory:nil
-                           file:nil
-                          types:types
-                 modalForWindow:[self window]
-                  modalDelegate:self
-                 didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:)
-                    contextInfo:(void *)tag];
+    
+    [panel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result) {
+        int returnCode = (result == NSFileHandlingPanelOKButton) ? NSOKButton : NSCancelButton;
+        
+        [self openPanelDidEnd:panel returnCode:returnCode contextInfo:(void *)tag];
+    }];
 }
 
 - (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo {
@@ -582,7 +581,7 @@ enum {
 
   int tag = (int)contextInfo;
 
-  NSString *path = [panel filename];
+  NSString *path = [[panel URL] absoluteString];
   
   if (tag == kEntourageRGETag) {
     // look in the Mail subdirectory of the Entourage archive; from there,
@@ -689,7 +688,7 @@ enum {
   NSBeginAlertSheet(errorTitle, nil, nil, nil,
                     [self window], self,
                     @selector(authFailedSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, errorMsg);
+                    nil, nil, @"%@", errorMsg);
 }
 
 #pragma mark IBActions
@@ -727,7 +726,7 @@ enum {
 
       NSBeginAlertSheet(errorTitle, nil, nil, nil,
                         [self window], self, NULL,
-                        nil, nil, errorMsg);
+                        nil, nil, @"%@", errorMsg);
       return;
     }
   }
@@ -1441,7 +1440,7 @@ enum {
   NSBeginAlertSheet(title, quitBtn, dontQuitBtn, nil,
                     [self window], self,
                     @selector(quitSheetDidEnd:returnCode:contextInfo:),
-                    nil, nil, msg);
+                    nil, nil, @"%@", msg);
   return NO;
 }
 
@@ -1551,7 +1550,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
       NSDictionary *attrs;
       attrs = [NSDictionary dictionaryWithObject:[NSColor grayColor]
                                           forKey:NSForegroundColorAttributeName];
-      name = [[[NSAttributedString alloc] initWithString:name
+      return [[[NSAttributedString alloc] initWithString:name
                                               attributes:attrs] autorelease];
     }
     return name;
