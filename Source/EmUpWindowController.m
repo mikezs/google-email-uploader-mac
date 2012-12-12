@@ -554,13 +554,11 @@ enum {
   NSOpenPanel *panel = [NSOpenPanel openPanel];
   [panel setPrompt:NSLocalizedString(@"SelectButton", nil)]; // "Select"
 
-  NSArray *types = nil;
   if (tag == kEntourageRGETag) {
     // select "files" with extension rge, though it's really a package directory
     [panel setCanChooseDirectories:NO];
     [panel setCanChooseFiles:YES];
     [panel setMessage:NSLocalizedString(@"SelectRGETitle", nil)]; // "Select rge file"
-    types = [NSArray arrayWithObject:@"rge"];
   } else {
     // select any folder
     [panel setCanChooseDirectories:YES];
@@ -1502,8 +1500,10 @@ enum {
   if (item == nil) {
     return [[itemsControllers_ objectAtIndex:index] rootItem];
   }
+    
+    OutlineViewItem *outlineViewItem = (OutlineViewItem *)item;
 
-  id childItem = [item childAtIndex:index];
+  id childItem = [outlineViewItem childAtIndex:index];
   return childItem;
 }
 
@@ -1513,23 +1513,25 @@ static NSString *const kCheckboxColumn = @"checkbox";
 - (id)outlineView:(NSOutlineView *)outlineView
 objectValueForTableColumn:(NSTableColumn *)tableColumn
            byItem:(id)item {
+    
+    OutlineViewItem *outlineViewItem = (OutlineViewItem *)item;
 
   if ([[tableColumn identifier] isEqual:kNameColumn]) {
 
     // placeholder if there's no item; we don't expect to see this
-    if (item == nil) return @"/";
+    if (outlineViewItem == nil) return @"/";
 
-    NSString *name = [item name];
+    NSString *name = [outlineViewItem name];
 
     // indent according to the level of this folder
-    NSString *padding = [@"" stringByPaddingToLength:[item level] * 3
+    NSString *padding = [@"" stringByPaddingToLength:[outlineViewItem level] * 3
                                           withString:@" "
                                      startingAtIndex:0];
     name = [padding stringByAppendingString:name];
 
-    if ([item numberOfMessages] > 0 || ![outlineView isItemExpanded:item]) {
-      unsigned int checkedNum = [item recursiveNumberOfCheckedMessages];
-      unsigned int totalNum = [item recursiveNumberOfMessages];
+    if ([outlineViewItem numberOfMessages] > 0 || ![outlineView isItemExpanded:outlineViewItem]) {
+      unsigned int checkedNum = [outlineViewItem recursiveNumberOfCheckedMessages];
+      unsigned int totalNum = [outlineViewItem recursiveNumberOfMessages];
 
       // report the number of checked items contained in this folder, and if
       // it's less than that total number of contained items, report that too
@@ -1557,7 +1559,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
   }
 
   if ([[tableColumn identifier] isEqual:kCheckboxColumn]) {
-    return [NSNumber numberWithInt:[item state]];
+    return [NSNumber numberWithInt:[outlineViewItem state]];
   }
   return nil;
 }
