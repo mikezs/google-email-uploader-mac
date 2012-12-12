@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/42/trunk/Source
+END
+GDataEntryMailItem.m
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/15/trunk/Source/GDataEntryMailItem.m
+END
+OutlineViewItem.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/3/trunk/Source/OutlineViewItem.h
+END
+main.m
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/3/trunk/Source/main.m
+END
+OutlineViewItem.m
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/10/trunk/Source/OutlineViewItem.m
+END
+Info.plist
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/39/trunk/Source/Info.plist
+END
+truckmail.icns
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/11/trunk/Source/truckmail.icns
+END
+EmUpUtilities.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/Source/EmUpUtilities.h
+END
+EmUpWindowController.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/17/trunk/Source/EmUpWindowController.h
+END
+EmUpConstants.h
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/30/trunk/Source/EmUpConstants.h
+END
+LatestVersion.plist
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/40/trunk/Source/LatestVersion.plist
+END
+EmUpUtilities.m
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/Source/EmUpUtilities.m
+END
+EmUpWindowController.m
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/39/trunk/Source/EmUpWindowController.m
+END
+EmUpConstants.m
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/Source/EmUpConstants.m
+END
+AppleMailItemsController.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/3/trunk/Source/AppleMailItemsController.h
+END
+EmUpAppController.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/24/trunk/Source/EmUpAppController.h
+END
+MBoxItemsController.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/3/trunk/Source/MBoxItemsController.h
+END
+MailUploadDoneSound.mp3
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/3/trunk/Source/MailUploadDoneSound.mp3
+END
+AppleMailItemsController.m
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/39/trunk/Source/AppleMailItemsController.m
+END
+EmUpAppController.m
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/39/trunk/Source/EmUpAppController.m
+END
+MBoxItemsController.m
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/39/trunk/Source/MBoxItemsController.m
+END
+ReleaseNotes.txt
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/41/trunk/Source/ReleaseNotes.txt
+END
+EmailUploader_Prefix.pch
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/3/trunk/Source/EmailUploader_Prefix.pch
+END
+GDataEntryMailItem.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/7/trunk/Source/GDataEntryMailItem.h
+END
+truckmail.png
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/42/trunk/Source/truckmail.png
+END

@@ -1,0 +1,6 @@
+K 13
+svn:externals
+V 78
+externals/GData -r708 http://gdata-objectivec-client.googlecode.com/svn/trunk
+
+END
